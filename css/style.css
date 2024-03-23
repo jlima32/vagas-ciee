@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+a{
+    text-decoration: none;
+    color: #7C7786;
+}
+
 body{
     background-color: #ECECEC;
     font-family: "Inter", sans-serif;
