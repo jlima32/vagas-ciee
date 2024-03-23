@@ -110,3 +110,10 @@ section{
     height: 2px;
     background-color: #777;
 }
+
+@media screen and (min-width: 1280px){
+	
+    .vaga-wrapper{
+        width: 24%;
+    }
+} 
