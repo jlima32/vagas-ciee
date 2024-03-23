@@ -40,3 +40,68 @@ header p{
     background-color: #DDD;
     border-color: #AAA;
 }
+
+section{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+    gap: 1rem;
+}
+
+.vaga-wrapper{
+    
+    width: 100%;
+}
+
+.vaga{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #FFF;
+    padding: 1rem;
+    height: 100%;
+}
+
+.vaga:hover{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.title{
+    font-weight: 600;
+    line-height: 2rem;
+}
+
+.info{
+    font-weight: 300;
+}
+
+.btn-vaga{
+    text-align: center;
+}
+
+.btn-link{
+    text-align: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 1rem;
+    text-transform: capitalize;
+    border: 1px solid #777;
+    width: 100%;
+    background-color: #FFF;
+    color: #7C7786;
+    cursor: pointer;
+}
+
+.btn-link:hover{
+    background-color: #ECECEC;
+    color: #777;
+    transition: 0.4s;
+}
+
+.line{
+    margin: 0.5rem 0;
+    width: 100px;
+    height: 2px;
+    background-color: #777;
+}
