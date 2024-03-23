@@ -10,3 +10,33 @@ body{
     color: #7C7786;
     padding: 0 2rem;
 }
+
+header{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    align-items: center;
+}
+
+header p{
+    text-transform: none;
+}
+
+.info-vagas {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem;
+    border: 1px solid #777;
+}
+
+.novas-vagas{
+    background-color: #C9E2C5;
+    color: #116400;
+}
+
+.sem-vagas{
+    background-color: #DDD;
+    border-color: #AAA;
+}
