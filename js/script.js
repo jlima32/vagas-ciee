@@ -50,8 +50,7 @@ function verificarVagas(codigoUltimaVaga, codigoUltimaVagaCadastrada, listaVagas
         pInfoVagas.innerHTML = "Sem Novas Vagas!";
         header.appendChild(pInfoVagas);
 
-        console.log(listaVagas);
-
+        // console.log(listaVagas);
     }else{
         // Caso existam novas vagas
         let header = document.querySelector("header");
@@ -59,10 +58,25 @@ function verificarVagas(codigoUltimaVaga, codigoUltimaVagaCadastrada, listaVagas
         pInfoVagas.setAttribute("class", "info-vagas novas-vagas");
         pInfoVagas.innerHTML = "Foram Encontradas Novas Vagas!";
         header.appendChild(pInfoVagas);
-
-        console.log(listaVagas);
+        // Registra a última vaga visualizada
+        cadastrarUltimaVaga(codigoUltimaVaga);
+        // console.log(listaVagas);
     }
 
+}
+
+// Função para cadastrar a última vaga visualizada
+async function cadastrarUltimaVaga(codigo){
+    try{
+        //Envia uma requisição para registrar a última vaga visualizada
+        await fetch(urlUltimaVaga,{
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ numeroVaga: codigo })
+        });
+    }catch (error) {
+        console.log("Erro ao cadastrar código da última vaga: ", error)
+    }
 }
 
 async function fetchJson(url){
