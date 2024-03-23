@@ -49,7 +49,7 @@ function verificarVagas(codigoUltimaVaga, codigoUltimaVagaCadastrada, listaVagas
         pInfoVagas.setAttribute("class", "info-vagas sem-vagas");
         pInfoVagas.innerHTML = "Sem Novas Vagas!";
         header.appendChild(pInfoVagas);
-
+        mostrarVagas(listaVagas);
         // console.log(listaVagas);
     }else{
         // Caso existam novas vagas
@@ -61,8 +61,8 @@ function verificarVagas(codigoUltimaVaga, codigoUltimaVagaCadastrada, listaVagas
         // Registra a última vaga visualizada
         cadastrarUltimaVaga(codigoUltimaVaga);
         // console.log(listaVagas);
+        mostrarVagas(listaVagas);
     }
-
 }
 
 // Função para cadastrar a última vaga visualizada
@@ -77,6 +77,76 @@ async function cadastrarUltimaVaga(codigo){
     }catch (error) {
         console.log("Erro ao cadastrar código da última vaga: ", error)
     }
+}
+
+// Função para mostrar as vagas
+function mostrarVagas(listaVagas){
+    //seleciona a section no index.html
+    let section = document.querySelector("section");
+
+
+    listaVagas.forEach(vagas => {
+
+        // cria uma div
+        let vagasWrapper = document.createElement("div");
+        // define a classe da div criada
+        vagasWrapper.setAttribute("class","vaga-wrapper");
+        // cria a div dentro da section
+        section.appendChild(vagasWrapper);
+
+        let vaga = document.createElement("div");
+        vagasWrapper.appendChild(vaga);
+
+        pVagaEmpresa = document.createElement("p");
+        pVagaEmpresa.setAttribute("class","title");
+        pVagaEmpresa.innerHTML = "Empresa: ";
+        vaga.appendChild(pVagaEmpresa);
+        vaga.setAttribute("class","vaga");
+        spanNomeEmpresa = document.createElement("span");
+        spanNomeEmpresa.setAttribute("class","info");
+        spanNomeEmpresa.innerHTML = vagas.nomeEmpresa;
+        pVagaEmpresa.appendChild(spanNomeEmpresa);
+        
+        pLine = document.createElement("p");
+        pLine.setAttribute("class","line");
+        vaga.appendChild(pLine);
+
+        pCodigoVaga = document.createElement("p");
+        pCodigoVaga.setAttribute("class", "title");
+        pCodigoVaga.innerHTML = "Código da Vaga: ";
+        vaga.appendChild(pCodigoVaga);
+        spanCodigoVaga = document.createElement("span");
+        spanCodigoVaga.setAttribute("class", "info");
+        spanCodigoVaga.innerHTML = vagas.codigoVaga;
+        pCodigoVaga.appendChild(spanCodigoVaga);
+
+        pBolsaAuxilio = document.createElement("p");
+        pBolsaAuxilio.setAttribute("class", "title");
+        pBolsaAuxilio.innerHTML = "Bolsa Auxílio: ";
+        vaga.appendChild(pBolsaAuxilio);
+        spanBolsaAuxilio = document.createElement("span");
+        spanBolsaAuxilio.setAttribute("class", "info");
+        spanBolsaAuxilio.innerHTML = `R$ ${vagas.bolsaAuxilio.toFixed(2)} / ${vagas.tipoAuxilioBolsa}`;
+        pBolsaAuxilio.appendChild(spanBolsaAuxilio);
+
+        pLocal = document.createElement("p");
+        pLocal.setAttribute("class", "title");
+        pLocal.innerHTML = "Local do Estágio: ";
+        vaga.appendChild(pLocal);
+        spanLocal = document.createElement("span");
+        spanLocal.setAttribute("class", "info");
+        spanLocal.innerHTML = `${vagas.local.cidade} - ${vagas.local.uf}`;
+        pLocal.appendChild(spanLocal);
+
+        divBtn = document.createElement("div");
+        divBtn.setAttribute("class", "btn-vaga");
+        vaga.appendChild(divBtn);
+        buttonLink = document.createElement("p");
+        buttonLink.setAttribute("class", "btn-link");
+        buttonLink.innerHTML = `<a href='https://portal.ciee.org.br/quero-uma-vaga/?codigoVaga=${vagas.codigoVaga}' target='_blank'>Visualizar Vaga</a>`;
+        divBtn.appendChild(buttonLink);
+    });
+
 }
 
 async function fetchJson(url){
