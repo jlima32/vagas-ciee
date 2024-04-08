@@ -94,6 +94,12 @@ function mostrarVagas(listaVagas){
         // cria a div dentro da section
         section.appendChild(vagasWrapper);
 
+        if(vagas.bolsaAuxilio == null){
+            vagas.bolsaAuxilio = " ";
+        }else{
+            vagas.bolsaAuxilio = vagas.bolsaAuxilio.toFixed(2);
+        }
+
         let vaga = document.createElement("div");
         vagasWrapper.appendChild(vaga);
 
@@ -126,7 +132,7 @@ function mostrarVagas(listaVagas){
         vaga.appendChild(pBolsaAuxilio);
         spanBolsaAuxilio = document.createElement("span");
         spanBolsaAuxilio.setAttribute("class", "info");
-        spanBolsaAuxilio.innerHTML = `R$ ${vagas.bolsaAuxilio.toFixed(2)} / ${vagas.tipoAuxilioBolsa}`;
+        spanBolsaAuxilio.innerHTML = `R$ ${vagas.bolsaAuxilio} / ${vagas.tipoAuxilioBolsa}`;
         pBolsaAuxilio.appendChild(spanBolsaAuxilio);
 
         pLocal = document.createElement("p");
