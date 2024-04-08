@@ -95,9 +95,7 @@ function mostrarVagas(listaVagas){
         section.appendChild(vagasWrapper);
 
         if(vagas.bolsaAuxilio == null){
-            vagas.bolsaAuxilio = " ";
-        }else{
-            vagas.bolsaAuxilio = vagas.bolsaAuxilio.toFixed(2);
+            vagas.bolsaAuxilio = vagas.bolsaAuxilioDe;
         }
 
         let vaga = document.createElement("div");
@@ -132,7 +130,7 @@ function mostrarVagas(listaVagas){
         vaga.appendChild(pBolsaAuxilio);
         spanBolsaAuxilio = document.createElement("span");
         spanBolsaAuxilio.setAttribute("class", "info");
-        spanBolsaAuxilio.innerHTML = `R$ ${vagas.bolsaAuxilio} / ${vagas.tipoAuxilioBolsa}`;
+        spanBolsaAuxilio.innerHTML = `R$ ${vagas.bolsaAuxilio.toFixed(2)} / ${vagas.tipoAuxilioBolsa}`;
         pBolsaAuxilio.appendChild(spanBolsaAuxilio);
 
         pLocal = document.createElement("p");
